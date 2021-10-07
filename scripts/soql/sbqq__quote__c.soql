@@ -1,0 +1,1 @@
+SELECT Id, SBQQ__Account__c, SBQQ__Opportunity2__c FROM SBQQ__Quote__c

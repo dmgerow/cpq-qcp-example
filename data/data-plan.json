@@ -1,0 +1,26 @@
+[
+  {
+    "sobject": "Account",
+    "saveRefs": true,
+    "resolveRefs": false,
+    "files": ["Account.json"]
+  },
+  {
+    "sobject": "Opportunty",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Opportunity.json"]
+  },
+  {
+    "sobject": "SBQQ__Quote__c",
+    "saveRefs": false,
+    "resolveRefs": true,
+    "files": ["SBQQ__Quote__c.json"]
+  },
+  {
+    "sobject": "Product2",
+    "saveRefs": true,
+    "resolveRefs": false,
+    "files": ["Product2.json"]
+  }
+]

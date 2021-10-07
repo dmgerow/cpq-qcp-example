@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "../out-tsc/spec",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "noUnusedLocals": false,
+    "resolveJsonModule": true,
+    "types": ["mocha"],
+    "typeRoots": [
+      "node_modules/@types",
+      "./src/types",
+    ],
+    "lib": [
+      "es7",
+      "dom"
+    ],
+    "module": "commonjs",
+    "baseUrl": "./"
+  }
+}

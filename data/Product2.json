@@ -1,0 +1,12 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref1"
+            },
+            "IsActive": true,
+            "Name": "Large Container"
+        }
+    ]
+}

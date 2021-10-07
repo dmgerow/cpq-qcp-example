@@ -1,0 +1,12 @@
+{
+  "records": [
+    {
+      "attributes": {
+        "type": "SBQQ__Quote__c",
+        "referenceId": "SBQQ__Quote__cRef1"
+      },
+      "SBQQ__Account__c": "@AccountRef1",
+      "SBQQ__Opportunity2__c": "@OpportunityRef1"
+    }
+  ]
+}
