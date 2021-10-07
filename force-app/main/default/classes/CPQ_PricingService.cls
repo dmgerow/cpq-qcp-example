@@ -1,15 +1,15 @@
 @RestResource(urlMapping='/cpq/pricing')
 global with sharing class CPQ_PricingService {
     @HttpPost
-    global static String doHandlePricingCalc(String quoteLineModelsString) {
+    global static String calculatePrice(String quoteModelString) {
         try {
-            List<QuoteLineModel> quoteLineModels = (List<QuoteLineModel>) JSON.deserialize(
-                quoteLineModelsString,
-                List<QuoteLineModel>.class
+            QuoteModel quoteModel = (QuoteModel) JSON.deserialize(
+                quoteModelString,
+                QuoteModel.class
             );
-            return 'there are ' + quoteLineModels.size() + ' line items on this quote';
+            return 'there are ' + quoteModel.lineItems.size() + ' line items on this quote';
         } catch (Exception e) {
-            throw new CPQ_PricingServiceException(e.getMessage());
+            throw new CPQ_PricingServiceException('CPQ_PricingServiceException: ' + e.getMessage());
         }
     }
 

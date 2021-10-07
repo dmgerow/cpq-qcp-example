@@ -23,6 +23,16 @@ This will:
 3. Import data
 4. Generate a password for you
 
-This will print out your scratch org password. Use this to authorize the VS Code QCP extension.
+This will print out your scratch org password. Use this to authorize the VS Code QCP extension. Using
+
+```bash
+SFDC CPQ: Initialize Project
+```
 
 After this, make sure that you authorize the calculator service before pushing the sample QCPs or else the transpiler service will fail.
+
+To push your QCP you can open it and execute:
+
+```bash
+SFDC CPQ: Initialize Project
+```

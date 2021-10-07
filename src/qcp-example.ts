@@ -56,23 +56,26 @@ export function onInit(quoteLineModels, conn) {
  */
 export function onBeforeCalculate(quoteModel, quoteLineModels, conn) {
   return new Promise((resolve, reject) => {
-    conn.apex
-      .post(
-        "/cpq/pricing",
-        JSON.stringify(
-          getRecordsFromModelsWithoutRelationships(quoteLineModels)
-        )
-      )
-      .then((response) => {
-        resolve("success");
-      })
-      .catch((err) => {
-        console.error(err);
-        reject(err);
-      });
+    if (quoteLineModels.length > 0) {
+      let request = {
+        lineItems: reduceLineModels(quoteLineModels),
+        record: removeRelationshipsFromRecord(quoteModel.record)
+      };
+      conn.apex
+        .post("/cpq/pricing", { pricingRequestString: JSON.stringify(request) })
+        .then((response) => {
+          console.log(response);
+          resolve("success");
+        })
+        .catch((err) => {
+          console.error(err);
+          reject(err);
+        });
+    } else {
+      resolve("success");
+    }
   });
 }
-
 /**
  * This method is called by the calculator before price rules are evaluated.
  * @param {QuoteModel} quoteModel JS representation of the quote being evaluated
@@ -177,18 +180,23 @@ function toApexDate(date) {
 // to deserialize it in apex. If you do not remove the relationships then the deserialization will
 // fail. The relationship objects also use a lot of memory which can result in heap size exceptions
 // being thrown during deserialization.
-function getRecordsFromModelsWithoutRelationships(quoteOrLineModel) {
-  const models = Array.isArray(quoteOrLineModel)
-    ? quoteOrLineModel
-    : [quoteOrLineModel];
-  return models.map((model) => {
-    let clonedRecord = Object.assign({}, model.record);
-    for (let field in clonedRecord) {
-      if (field.endsWith("__r")) {
-        delete clonedRecord[field];
-      }
+function removeRelationshipsFromRecord(record) {
+  let clonedRecord = Object.assign({}, record);
+  for (let field in clonedRecord) {
+    if (field.endsWith("__r")) {
+      delete clonedRecord[field];
     }
-    return clonedRecord;
+  }
+  return clonedRecord;
+}
+
+function reduceLineModels(quoteLineModels) {
+  let lineModelsByKey = quoteLineModels.map((lineModel) => {
+    return {
+      key: lineModel.key,
+      record: removeRelationshipsFromRecord(lineModel.record)
+    };
   });
+  return lineModelsByKey;
 }
 // ********************* End Utilities ********************//
