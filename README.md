@@ -8,10 +8,6 @@ This repository contains a sample scratch org configuration with a QCP that demo
 2. Copy the qcp-example.ts file into a custom script or configure the VS Code extension to push it (see Scratch Org Notes)
 3. Enable the custom script as the quote calculator plugin in package settings
 
-## Implementation Considerations
-
--
-
 ## Scratch Org Notes
 
 You can make a scratch org with CPQ installed using the following command:
