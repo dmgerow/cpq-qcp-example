@@ -16,7 +16,7 @@ If you are working with a developer sandbox, you can follow the org installation
 
 1. First, make sure that all of the npm modules are installed with `npm install`
 
-2. Make a scratch org with CPQ installed with `npm run crate:scratch`. This will:
+2. Make a scratch org with CPQ installed with `npm run create:scratch`. This will:
 
    - Create the scratch org
    - Install CPQ
