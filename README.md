@@ -6,6 +6,13 @@ If you are working with a scratch org, please see the scratch org installation s
 
 If you are working with a developer sandbox, you can follow the org installation instructions instead.
 
+This repository has sample code that can be used to show
+
+- Page security plugins (showing, hiding and making fields read only)
+- All of the quote calculation evaluation eventsQuote/Quote Line models, the data in them, and how to debug quote pricing with them
+- Performing a callout to an Apex REST service to incorporate apex code into your calculation sequence (necessary if you ever want to perform callouts to external endpoints during a calculation) with test code
+- Storing the results of these callouts in the quote/quote lines
+
 ## Org Installation
 
 1. Make sure that the calculation service is authorized in package settings
@@ -32,3 +39,7 @@ If you are working with a developer sandbox, you can follow the org installation
 6. Enable the custom script as the quote calculator plugin in package settings
 
 7. Open your scratch org and you will find that there is already a quote created for you to use.
+
+## Troubleshooting
+
+If you change orgs or scratch orgs with the same project, you will likely get an error when saving your QCP stating that it does not exist in the org. This is because the ID of the QCP in the `.qcp` folder no longer exists. If this happens, delete the `.qcp` folder and re-initialize the project. You should then be able to push your QCP.
