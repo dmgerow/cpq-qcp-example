@@ -11,14 +11,8 @@
     "noUnusedLocals": false,
     "resolveJsonModule": true,
     "types": ["mocha"],
-    "typeRoots": [
-      "node_modules/@types",
-      "./src/types",
-    ],
-    "lib": [
-      "es7",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types", "./src/types"],
+    "lib": ["es7", "dom"],
     "module": "commonjs",
     "baseUrl": "./"
   }

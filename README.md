@@ -10,7 +10,13 @@ This repository contains a sample scratch org configuration with a QCP that demo
 
 ## Scratch Org Notes
 
-You can make a scratch org with CPQ installed using the following command:
+First, make sure that all of the npm modules are installed
+
+```bash
+npm install
+```
+
+Then, you can make a scratch org with CPQ installed using the following command:
 
 ```bash
 npm run crate:scratch
@@ -34,5 +40,5 @@ After this, make sure that you authorize the calculator service before pushing t
 To push your QCP you can open it and execute:
 
 ```bash
-SFDC CPQ: Initialize Project
+SFDC CPQ: Push QCP files to Salesforce
 ```
