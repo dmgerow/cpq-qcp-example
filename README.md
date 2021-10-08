@@ -29,4 +29,6 @@ If you are working with a developer sandbox, you can follow the org installation
 
 5. Push your QCP to your org via the command pallete with `SFDC QCP: Push QCP files to Salesforce`
 
-6. Open your scratch org and you will find that there is already a quote created for you to use.
+6. Enable the custom script as the quote calculator plugin in package settings
+
+7. Open your scratch org and you will find that there is already a quote created for you to use.
