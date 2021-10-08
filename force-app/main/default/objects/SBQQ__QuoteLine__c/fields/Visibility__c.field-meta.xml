@@ -14,7 +14,7 @@
             <sorted>false</sorted>
             <value>
                 <fullName>Edit</fullName>
-                <default>false</default>
+                <default>true</default>
                 <label>Edit</label>
             </value>
             <value>
