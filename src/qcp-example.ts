@@ -41,7 +41,8 @@ export function isFieldEditable(fieldName, line) {
  */
 export function onInit(quoteLineModels, conn) {
   return new Promise((resolve, reject) => {
-    // Perform logic here and resolve promise
+    debug("begin onInit");
+    logRecords(quoteLineModels);
     resolve("success");
   });
 }
@@ -54,6 +55,11 @@ export function onInit(quoteLineModels, conn) {
  */
 export function onBeforeCalculate(quoteModel, quoteLineModels, conn) {
   return new Promise((resolve, reject) => {
+    debug("begin onBeforeCalculate");
+    // NOTE: what you see in a debug will be reflective of the state of the models after the transaction completes.
+    // It does not provide a point in time snapshot. Use logrecords to get that information for point in time.
+    debug(quoteModel);
+    logRecords(quoteLineModels);
     let request = {
       lineItems: reduceLineModels(quoteLineModels),
       record: removeRelationshipsFromRecord(quoteModel.record)
@@ -83,6 +89,8 @@ export function onBeforeCalculate(quoteModel, quoteLineModels, conn) {
  */
 export function onBeforePriceRules(quoteModel, quoteLineModels, conn) {
   return new Promise((resolve, reject) => {
+    debug("begin onBeforePriceRules");
+    logRecords(quoteLineModels);
     // Perform logic here and resolve promise
     resolve("success");
   });
@@ -96,6 +104,8 @@ export function onBeforePriceRules(quoteModel, quoteLineModels, conn) {
  */
 export function onAfterPriceRules(quoteModel, quoteLineModels, conn) {
   return new Promise((resolve, reject) => {
+    debug("begin onAfterPriceRules");
+    logRecords(quoteLineModels);
     // Perform logic here and resolve promise
     resolve("success");
   });
@@ -110,6 +120,7 @@ export function onAfterPriceRules(quoteModel, quoteLineModels, conn) {
  */
 export function onAfterCalculate(quoteModel, quoteLineModels, conn) {
   return new Promise((resolve, reject) => {
+    debug("begin onAfterCalculate");
     // Perform logic here and resolve promise
     resolve("success");
   });
