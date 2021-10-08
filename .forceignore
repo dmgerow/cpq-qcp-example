@@ -6,6 +6,7 @@ package.xml
 force-app/main/default/featureParameters
 force-app/main/default/objects/Opportunity
 force-app/main/default/settings
+force-app/main/default/reportTypes
 force-app/main/default/objects/SBQQ__Quote__c/SBQQ__Quote__c.object-meta.xml
 force-app/main/default/objects/SBQQ__QuoteLine__c/SBQQ__QuoteLine__c.object-meta.xml
 
