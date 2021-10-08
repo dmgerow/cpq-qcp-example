@@ -1,18 +1,18 @@
-public with sharing class QuoteLineModel {
-    public SBQQ__QuoteLine__c record;
-    public Boolean amountDiscountProrated;
-    public Integer parentGroupKey;
-    public Integer parentItemKey;
-    public Integer key;
-    public Boolean upliftable;
-    public String configurationType;
-    public String configurationEvent;
-    public Boolean reconfigurationDisabled;
-    public Boolean descriptionLocked;
-    public Boolean productQuantityEditable;
-    public Decimal productQuantityScale;
-    public String dimensionType;
-    public Boolean productHasDimensions;
-    public Decimal targetCustomerAmount;
-    public Decimal targetCustomerTotal;
+global with sharing class QuoteLineModel {
+    global SBQQ__QuoteLine__c record;
+    global Boolean amountDiscountProrated;
+    global Integer parentGroupKey;
+    global Integer parentItemKey;
+    global Integer key;
+    global Boolean upliftable;
+    global String configurationType;
+    global String configurationEvent;
+    global Boolean reconfigurationDisabled;
+    global Boolean descriptionLocked;
+    global Boolean productQuantityEditable;
+    global Decimal productQuantityScale;
+    global String dimensionType;
+    global Boolean productHasDimensions;
+    global Decimal targetCustomerAmount;
+    global Decimal targetCustomerTotal;
 }

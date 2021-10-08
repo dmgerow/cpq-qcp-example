@@ -1,12 +1,12 @@
-public with sharing class QuoteModel {
-    public SBQQ__Quote__c record { get; set; }
-    public QuoteLineModel[] lineItems { get; set; }
-    public QuoteLineGroupModel[] lineItemGroups { get; set; }
-    public Integer nextKey;
-    public Boolean applyAdditionalDiscountLast;
-    public Boolean applyPartnerDiscountFirst;
-    public Boolean channelDiscountsOffList;
-    public Decimal customerTotal;
-    public Decimal netTotal;
-    public Decimal netNonSegmentTotal;
+global with sharing class QuoteModel {
+    global SBQQ__Quote__c record { get; set; }
+    global QuoteLineModel[] lineItems { get; set; }
+    global QuoteLineGroupModel[] lineItemGroups { get; set; }
+    global Integer nextKey;
+    global Boolean applyAdditionalDiscountLast;
+    global Boolean applyPartnerDiscountFirst;
+    global Boolean channelDiscountsOffList;
+    global Decimal customerTotal;
+    global Decimal netTotal;
+    global Decimal netNonSegmentTotal;
 }

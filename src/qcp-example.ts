@@ -18,18 +18,16 @@ const DEBUG = true;
 
 // ********************* Begin Page Security Plugin ********************//
 export function isFieldVisible(fieldName, line) {
-  // make list price read only at the bundle parent level
-  if (fieldName === "SBQQ__ListPrice__c" && line.SBQQ__Bundle__c === true) {
-    return line.Security_Level__c !== "Hidden";
+  if (!["SBQQ__ProductName__c", "Visibility__c"].includes(fieldName)) {
+    return line.Visibility__c !== "Hidden";
   }
   // Return null to ignore checking visibility for this specific field
   return null;
 }
 
 export function isFieldEditable(fieldName, line) {
-  // make quantity read only at the bundle parent level
-  if (fieldName === "SBQQ__Quantity__c" && line.SBQQ__Bundle__c === true) {
-    return false;
+  if (!["SBQQ__ProductName__c", "Visibility__c"].includes(fieldName)) {
+    return line.Visibility__c !== "Read-only";
   }
   return null;
 }
@@ -62,9 +60,14 @@ export function onBeforeCalculate(quoteModel, quoteLineModels, conn) {
         record: removeRelationshipsFromRecord(quoteModel.record)
       };
       conn.apex
-        .post("/cpq/pricing", { pricingRequestString: JSON.stringify(request) })
+        .post("/cpq/pricing", { quoteModelString: JSON.stringify(request) })
         .then((response) => {
           console.log(response);
+          quoteModel.record.SBQQ__Notes__c = response.record.SBQQ__Notes__c;
+          quoteLineModels.forEach((lineModel, index) => {
+            lineModel.record.SBQQ__Description__c =
+              response.lineItems[index].record.SBQQ__Description__c;
+          });
           resolve("success");
         })
         .catch((err) => {
