@@ -1,12 +1,8 @@
 @RestResource(urlMapping='/cpq/pricing')
 global with sharing class CPQ_PricingService {
     @HttpPost
-    global static QuoteModel calculatePrice(String quoteModelString) {
+    global static QuoteModel calculatePrice(QuoteModel quoteModel) {
         try {
-            QuoteModel quoteModel = (QuoteModel) JSON.deserialize(
-                quoteModelString,
-                QuoteModel.class
-            );
             quoteModel.record.SBQQ__Notes__c = String.valueOf(System.now());
             for (QuoteLineModel lineModel : quoteModel.lineItems) {
                 lineModel.record.SBQQ__Description__c =

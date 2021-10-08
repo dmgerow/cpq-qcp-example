@@ -54,29 +54,25 @@ export function onInit(quoteLineModels, conn) {
  */
 export function onBeforeCalculate(quoteModel, quoteLineModels, conn) {
   return new Promise((resolve, reject) => {
-    if (quoteLineModels.length > 0) {
-      let request = {
-        lineItems: reduceLineModels(quoteLineModels),
-        record: removeRelationshipsFromRecord(quoteModel.record)
-      };
-      conn.apex
-        .post("/cpq/pricing", { quoteModelString: JSON.stringify(request) })
-        .then((response) => {
-          console.log(response);
-          quoteModel.record.SBQQ__Notes__c = response.record.SBQQ__Notes__c;
-          quoteLineModels.forEach((lineModel, index) => {
-            lineModel.record.SBQQ__Description__c =
-              response.lineItems[index].record.SBQQ__Description__c;
-          });
-          resolve("success");
-        })
-        .catch((err) => {
-          console.error(err);
-          reject(err);
+    let request = {
+      lineItems: reduceLineModels(quoteLineModels),
+      record: removeRelationshipsFromRecord(quoteModel.record)
+    };
+    conn.apex
+      .post("/cpq/pricing", { quoteModel: request })
+      .then((response) => {
+        console.log(response);
+        quoteModel.record.SBQQ__Notes__c = response.record.SBQQ__Notes__c;
+        quoteLineModels.forEach((lineModel, index) => {
+          lineModel.record.SBQQ__Description__c =
+            response.lineItems[index].record.SBQQ__Description__c;
         });
-    } else {
-      resolve("success");
-    }
+        resolve("success");
+      })
+      .catch((err) => {
+        console.error(err);
+        reject(err);
+      });
   });
 }
 /**
