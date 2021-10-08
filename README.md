@@ -25,6 +25,6 @@ If you are working with a developer sandbox, you can follow the org installation
 
 3. Authorize the calculation service in the CPQ package settings
 
-4. Authorize the VS Code QCP extension via the command pallete with `SFDC CPQ: Initialize Project`
+4. Authorize the VS Code QCP extension via the command pallete with `SFDC QCP: Initialize Project`
 
 5. Push your QCP to your org via the command pallete with `SFDC CPQ: Push QCP files to Salesforce`
